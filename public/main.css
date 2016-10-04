@@ -70,8 +70,7 @@ a:active {
 /* Main Styles --------------------- */
 
 .main-header {
-  padding-top: 100px;
-  height: 450px;
+  padding-top: 40px;
   background: linear-gradient(#009944, transparent 10%),
               linear-gradient(0deg, #fff, transparent),
                #009944 url('download.jpeg') no-repeat center;
@@ -96,7 +95,7 @@ a:active {
 
 .primary-content {
 	padding-top: 25px;
-  padding-bottom: 95px;
+  padding-bottom: 40px;
 }
 
 .secondary-content {
@@ -105,7 +104,7 @@ a:active {
   border-bottom: 2px solid #dfe2e6;
 }
 
-.callout {
+.callLogin {
   font-size: 1.25em;
   border-bottom: 3px solid;
   padding: 0 9px 3px;
