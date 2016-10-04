@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+  window.HELP_IMPROVE_VIDEOJS = false;
+  <title>Greengo Golf</title>
+  <link rel="stylesheet" href="main.css">
+  <link href="//vjs.zencdn.net/5.4.6/video-js.min.css" rel="stylesheet">
+  <script src="//vjs.zencdn.net/5.4.6/video.min.js"></script>
+</head>
+
+<body>
+  <header id="top" class="main-header">
+    <span class="title">Greengo Golf</span>
+    <h1>Put Your Golf Swing Out There! </h1>
+    <img class="arrow" src="arrow.svg" alt="Down arrow">
+  </header>
+
+  <div class="primary-content t-border" ng-controller="HomeCtrl as controller">
+    <p class="intro">
+      Greengo Golf allows you to upload your golf swing video for others to give you pointers on how to improve your golf swing.
+    </p>
+    <a class="callout" href="#more">Find out more</a>
+
+    <!--<div class="wildlife">
+        <h2>Check out a sample golf swing</h2>
+        <p>
+           <a href="#sampleGolfVid">Sample Golf Video</a>
+        </p>
+      </div> End .wildlife -->
+
+    <a class="callout" href="#wildlife">See the Wildlife</a>
+  </div>
+  <!-- End .primary-content -->
+
+  <div class="secondary-content t-border group">
+    <div class="resorts">
+      <img src="img/resort.jpg" alt="Resort">
+      <h3>From Tents to Resorts</h3>
+      <p>
+        Lake Tahoe is full of wonderful places to stay. You have the ability to sleep in the outdoors in a tent, or relax like a
+        king at a five star resort. Here are our top three resorts:
+      </p>
+      <ul>
+        <li><a href="#hotels">Lake Tahoe Resort Hotel</a></li>
+        <li><a href="#resorts">South Lake Tahoe Resorts</a></li>
+        <li><a href="#lodging">Tahoe Ski Resort Lodging</a></li>
+      </ul>
+    </div>
+
+    <div class="tips">
+      <img src="img/mtn-landscape.jpg" alt="Mountain Landscape">
+      <h3>Pack Accordingly</h3>
+      <p>
+        One of most important things when it comes to traveling through the great outdoors is packing accordingly. Here are a few
+        tips:
+      </p>
+      <ol>
+        <li>Bring layers of clothing</li>
+        <li>Pack sunscreen</li>
+        <li>Carry extra water just in case</li>
+        <li>Pack light</li>
+      </ol>
+    </div>
+  </div>
+  <!-- End .secondary-content -->
+
+  <footer class="main-footer">
+    <p>All rights reserved to the state of <a href="#">California</a>.</p>
+    <a href="#top">Back to top &raquo;</a>
+  </footer>
+  <script src="/videogular/videogular.js"></script>
+  <script src="/videogular-controls/vg-controls.js"></script>
+  <script src="/videogular-overlay-play/vg-overlay-play.js"></script>
+  <script src="/videogular-poster/vg-poster.js"></script>
+  <script src="/videogular-buffering/vg-buffering.js"></script>
+  <script src="/main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-sanitize.js"></script>
+</body>
+
+</html>

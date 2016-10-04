@@ -1,0 +1,22 @@
+{
+  "name": "greengoGolf",
+  "version": "2.0.1",
+  "description": "Golf App",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon"
+  },
+  "author": "johngreen8828",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.3.0",
+    "body-parser": "^1.15.2",
+    "client-sessions": "^0.7.0",
+    "colors": "^1.1.2",
+    "ejs": "^2.4.2",
+    "express": "^4.14.0",
+    "mongoose": "^4.5.6",
+    "morgan": "^1.7.0"
+  }
+}
