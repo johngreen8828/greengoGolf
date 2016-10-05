@@ -51,6 +51,13 @@
                     <form ng-submit="auth.register.submit($event)">
                         <h1 class="text-center">Register!</h1>
                         <fieldset class="form-group">
+                            <label class="sr-only" for="name">User Name</label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+                                <input required placeholder="User Name" class="form-control" type="text" ng-model="auth.payload.name"/>
+                            </div>
+                        </fieldset>
+                        <fieldset class="form-group">
                             <label class="sr-only" for="email">Email</label>
                             <div class="input-group">
                                 <div class="input-group-addon">@</div>
@@ -63,6 +70,27 @@
                                 <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
                                 <input required placeholder="Create a password" class="form-control" type="password" ng-model="auth.payload.password"/>
                             </div>
+                        </fieldset>
+                        <fieldset class="form-group">
+                        <span>Select whether you are a teacher or student. </span>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <input required placeholder="Student" type="radio" aria-label="..."value="student" name="userType" ng-model="auth.payload.student">
+                                        </span>
+                                        <input type="text" class="form-control"                            aria-label="Teacher" placeholder="Teacher">
+                                    </div><!-- /input-group -->
+                                </div><!-- /.col-lg-6 -->
+                                <div class="col-lg-6">
+                                    <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <input required placeholder="Student" type="radio" aria-label="..."value="student" name="userType" ng-model="auth.payload.student">
+                                         </span>
+                                        <input type="text" class="form-control"                            aria-label="Student" placeholder="Student">
+                                    </div><!-- /input-group -->
+                                </div><!-- /.col-lg-6 -->
+                                </div><!-- /.row -->
                         </fieldset>
                         <button class="btn btn-primary" type="submit">Register</button>
                         <p ng-class="auth.register.alert">{{ auth.register.message }}</p>
