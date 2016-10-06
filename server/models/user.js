@@ -5,10 +5,13 @@ const SALT = 10
 var mongoose = require('mongoose'),
     bcrypt = require('bcryptjs'),
     UserSchema = new mongoose.Schema({
-        name     : String,
-        email    : { type: String, unique: true },
-        password : String,
-        created  : Number // Date.now()
+        name: { type: String },
+        email: { type: String, unique: true },
+        password: { type: String },
+        userType: { type: String },
+        //refID: { type: mongoose.Schema.ObjectId, ref: "refId" },
+        created: { type: Number, default: Date.now }
+
     });
 
 // hash passwords before saving them
@@ -16,7 +19,7 @@ UserSchema.pre('save', function(next) {
     var user = this;
 
     // only hash the password if it has been modified (or is new)
-    if ( !user.isModified('password') ) {
+    if (!user.isModified('password')) {
         return next();
     }
     // generate a salt

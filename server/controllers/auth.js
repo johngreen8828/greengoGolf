@@ -23,7 +23,7 @@ var User = require('../models/user'),
             status: 200,
             message: 'Login success'
         },
-        register : {
+        register: {
             status: 200,
             message: 'Register success'
         }
@@ -31,8 +31,8 @@ var User = require('../models/user'),
 
 module.exports = {
     render: (req, res) => {
-        if( req.session.uid ) {
-            return res.redirect('/dashboard'); // if the user already has a session cookie, just place them into the dashboard
+        if (req.session.uid) {
+            return res.redirect('/home'); // if the user already has a session cookie, just place them into the dashboard
         } else {
             res.render('auth', req.session); // render the authenticaiton page (register/login)
         }
@@ -53,6 +53,7 @@ module.exports = {
             if (!user) {
                 // If there was no user found for the given user name, send back a 403 response (forbidden)
                 res.status(403).send(errors.login);
+                console.info('auth.login.user =', user);
             } else {
                 console.info('auth.login.user =', user);
                 // If we got this far, then we know that the user exists. But did they put in the right password?
@@ -75,9 +76,9 @@ module.exports = {
         var newUser = new User(req.body)
 
         newUser.save((err, user) => {
-            if( err ) {
+            if (err) {
                 console.error('#ERROR#'.bold.red, err.message);
-                if( err.code === 11000 ) {
+                if (err.code === 11000) {
                     res.status(errors.users.duplicate.status)
                         .send(errors.users.duplicate);
                 } else {
@@ -91,10 +92,10 @@ module.exports = {
         });
     },
     session: (req, res, next) => {
-        if( req.session.uid ) {
+        if (req.session.uid) {
             next();
         } else {
-            res.redirect('/login');
+            res.redirect('/public');
         }
     }
 };

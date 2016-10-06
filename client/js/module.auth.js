@@ -7,7 +7,7 @@ function Auth($http) { // auth controller constructor function
     console.info("Auth.controller:loaded");
 
     var auth = this,
-        alertError = ['alert','alert-danger'];
+        alertError = ['alert', 'alert-danger'];
 
     auth.payload = {};
 
@@ -19,7 +19,7 @@ function Auth($http) { // auth controller constructor function
         success: function(res) {
             // when login is successful, redirect them into the dashboard
             console.info('auth.login.success');
-            location.href = "/dashboard";
+            location.href = "/home.html";
         },
         error: function(err) {
             console.error('Login.error');
@@ -34,7 +34,7 @@ function Auth($http) { // auth controller constructor function
         success: function(res) {
             // when register is successful, also redirect them into the dashboard (already logged in, [req.session.user] on the backend)
             console.info('auth.register.success');
-            location.href = "/dashboard";
+            location.href = "/index.html";
         },
         error: function(err) {
             console.error('Register:error', err);

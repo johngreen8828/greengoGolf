@@ -1,12 +1,11 @@
 'use strict'
 
-var Auth = require('./auth');
+var Auth = require('./controllers/auth.js');
+var Home = require('./controllers/home.js');
+
 
 module.exports = function(app) {
-    // SITE ROOT
-    app.get('/', (req, res) => { // replace this route with a landing or home page, or break this out into another controller if needed!
-        res.render('home');
-    });
+
     app.get('/login', Auth.render); // route for the login page
     app.get('/logout', Auth.logout); // route for logging out
 
@@ -18,4 +17,9 @@ module.exports = function(app) {
     app.get('/dashboard', (req, res) => { // renders the dashboard, break this out into another controller if needed!
         res.render('dashboard', req.session)
     });
+    //Home page
+    app.route('/home')
+        .get(Home.get)
+        .put(Home.put)
+        .post(Home.post);
 }
