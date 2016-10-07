@@ -1,11 +1,16 @@
 module.exports = {
     get: (req, res) => {
-        res.render('home', req.session);
+        res.render('home/layout', req.session);
     },
-    post: (req, res) => {
-        res.send('Add a book');
-    },
-    put: (req, res) => {
-        res.send('Update the book');
+    partials: {
+        index: (req, res) => {
+            res.render('home/index', req.session);
+        },
+        about: (req, res) => {
+            res.render('home/about', req.session);
+        },
+        video: (req, res) => {
+            res.render('home/video', req.session);
+        }
     }
 };

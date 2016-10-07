@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="module.home">
+    <head>
+        <title>Greengo Golf</title>
+
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/main.css">
+
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-route.min.js"></script>
+
+        <script src="/js/module.home.js"></script>
+    </head>    
+    <body>
+        <section id="wrapper" class="container">
+            <header>
+                <ul class="nav nav-pills">
+                    <li role="presentation" class="home-nav"><a href="#/">Home</a></li>
+                    <li role="presentation" id="home-nav"><a href="#/about">About</a></li>
+                    <li role="presentation" id="home-nav"><a href="#/video">Video</a></li>
+                </ul>
+                </nav>
+            </header>
+            <div class="jumbotron jumbo-main-header">
+                <h1 id="over-rule-text">Greengo Golf!</h1>
+                <p class="intro" id="title">
+                Greengo Golf brings teachers and students together to improve your golf swing.
+                </p>  
+            </div>
+        </section >
+        <ng-view></ng-view>
+        <footer class="text-center">&copy; <%= new Date().getFullYear() %></footer>
+      <!-- Go to www.addthis.com/dashboard to customize your tools -->
+        <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57f6e2801bbabf56"></script>
+    </body>
+</html>

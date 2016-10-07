@@ -1,0 +1,27 @@
+<div class="primary-content t-border">
+    <a class="callout" href="/johnGreen.jpg">Find out more</a>
+    <div class="video-container">
+        <video width="416" height="312" controls><!--320 X 240 -->
+            <source src="/JohnS2.mp4" type="video/mp4">
+            <source src="movie.ogg" type="video/ogg">
+        </video>
+    </div>
+    <div ng-controller="ModalController as modalCtrl">
+        <button ng-click="modalCtrl.openModal();">Open Modal</button>
+        <button ng-click="modalCtrl.saveModal()">Save Screen Shot</button>
+        <div id='modalBox' onclick='moveModal();' ng-show="modalCtrl.editing" ng-style="modalCtrl.modalBoxStyles">
+            <canvas id='canvas'></canvas>
+            <textarea class="tips" ng-Label="Golf Tips" type="text" placeholder="Enter Golf Tips:" ng-model="modalCtrl.canData.tips"></textarea>
+            <span class="close" ng-click="modalCtrl.Close()">X</span>
+        </div>
+        <!--Edited Sreen Area-->
+        <div id="screenSavesContext">
+            <h3>{{modalCtrl.canData[0].imgGName}}</h3>
+            <ul class="makeLeft">
+                <li ng-repeat="imageData in modalCtrl.canData" style="list-style:none" class="imgContainer"> {{$index}}
+                    <img ng-src="{{imageData.imgData}}" ng-click="modalCtrl.loadSnapshot($index, imageData, imageData.imgComments, $event)" ng-Dblclick="modalCtrl.removeItem($index)" class="snapshot">
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

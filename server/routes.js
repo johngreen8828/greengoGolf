@@ -3,7 +3,6 @@
 var Auth = require('./controllers/auth.js');
 var Home = require('./controllers/home.js');
 
-
 module.exports = function(app) {
 
     app.get('/login', Auth.render); // route for the login page
@@ -17,9 +16,19 @@ module.exports = function(app) {
     app.get('/dashboard', (req, res) => { // renders the dashboard, break this out into another controller if needed!
         res.render('dashboard', req.session)
     });
-    //Home page
+
+    // Home page
+    app.all('/home*', Auth.session);
+
     app.route('/home')
-        .get(Home.get)
-        .put(Home.put)
-        .post(Home.post);
+        .get(Home.get);
+
+    app.route('/home/index')
+        .get(Home.partials.index);
+
+    app.route('/home/about')
+        .get(Home.partials.about);
+
+    app.route('/home/video')
+        .get(Home.partials.video);
 }
