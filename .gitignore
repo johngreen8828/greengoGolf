@@ -3,6 +3,9 @@ logs
 *.log
 npm-debug.log*
 
+#Don't allow key file to move up
+server/config.js
+
 # Runtime data
 pids
 *.pid

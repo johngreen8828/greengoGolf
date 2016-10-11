@@ -6,10 +6,13 @@
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
         <link rel="stylesheet" href="/main.css">
 
+        <script src="//sdk.amazonaws.com/js/aws-sdk-2.6.7.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>        
-        <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-route.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-sanitize.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/danialfarid-angular-file-upload/12.0.1/ng-file-upload.js"></script>
 
         <script src="/js/module.home.js"></script>
     </head>    
@@ -30,7 +33,9 @@
                 </p>  
             </div>
         </section >
+        
         <ng-view></ng-view>
+
         <footer class="text-center">&copy; <%= new Date().getFullYear() %></footer>
       <!-- Go to www.addthis.com/dashboard to customize your tools -->
         <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57f6e2801bbabf56"></script>

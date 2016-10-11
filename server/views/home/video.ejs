@@ -1,25 +1,46 @@
 <div class="primary-content t-border">
     <a class="callout" href="/johnGreen.jpg">Find out more</a>
-    <div class="video-container">
-        <video width="416" height="312" controls><!--320 X 240 -->
-            <source src="/JohnS2.mp4" type="video/mp4">
-            <source src="movie.ogg" type="video/ogg">
-        </video>
+    <div>
+    
+    <ul>
+        <li ng-repeat="video in vCtrl.videoList" ng-click="vCtrl.activeVideo=video.videoURL"><a>{{video.title}} posted by {{video.user}}</a></li>
+    </ul>
+
     </div>
-    <div ng-controller="ModalController as modalCtrl">
-        <button ng-click="modalCtrl.openModal();">Open Modal</button>
-        <button ng-click="modalCtrl.saveModal()">Save Screen Shot</button>
-        <div id='modalBox' onclick='moveModal();' ng-show="modalCtrl.editing" ng-style="modalCtrl.modalBoxStyles">
-            <canvas id='canvas'></canvas>
-            <textarea class="tips" ng-Label="Golf Tips" type="text" placeholder="Enter Golf Tips:" ng-model="modalCtrl.canData.tips"></textarea>
-            <span class="close" ng-click="modalCtrl.Close()">X</span>
+    <div class="video-container" ng-init="vCtrl.getVideos()">
+       <!--<video width="416" height="312" controls><!--320 X 240 -->
+            <!--<source src="/JohnS2.mp4" type="video/mp4">-->
+            <!-- <source ng-src="{{vCtrl.activeVideo}}" type="video/mp4">-->
+            <!-- <source src="movie.ogg" type="video/ogg"> -->
+            <!--<source src="{{vCtrl.activeVideo | trustUrl}}">-->
+        <!--</video>-->
+
+        <video width="416" height="312" controls="controls" src="{{vCtrl.activeVideo | trustUrl}}"></video>
+    </div>
+    
+    <input type="file"
+        ng-model="vCtrl.videoFile" 
+        ngf-pattern="'*'"
+        ngf-accept="'video/*'"
+        ngf-select="vCtrl.postVideo()"
+    />
+  <input type="text" ng-model="additionalData">
+  <div ngf-select ng-model="files" ></div>
+        
+    <div >
+        <button ng-click="vCtrl.openModal();">Open Modal</button>
+        <button ng-click="vCtrl.saveModal()">Save Screen Shot</button>
+        <div id='modalBox' onclick="vCtrl.moveModal();" ng-show="vCtrl.editing" ng-style="vCtrl.modalBoxStyles">
+            <canvas crossOrigin="Anonymous" id='canvas'></canvas>
+            <textarea class="tips" ng-Label="Golf Tips" type="text" placeholder="Enter Golf Tips:" ng-model="vCtrl.canData.tips"></textarea>
+            <span class="close" ng-click="vCtrl.Close()">X</span>
         </div>
         <!--Edited Sreen Area-->
         <div id="screenSavesContext">
-            <h3>{{modalCtrl.canData[0].imgGName}}</h3>
+            <h3>{{vCtrl.canData[0].imgGName}}</h3>
             <ul class="makeLeft">
-                <li ng-repeat="imageData in modalCtrl.canData" style="list-style:none" class="imgContainer"> {{$index}}
-                    <img ng-src="{{imageData.imgData}}" ng-click="modalCtrl.loadSnapshot($index, imageData, imageData.imgComments, $event)" ng-Dblclick="modalCtrl.removeItem($index)" class="snapshot">
+                <li ng-repeat="imageData in vCtrl.canData" style="list-style:none" class="imgContainer"> {{$index}}
+                    <img ng-src="{{imageData.imgData}}" ng-click="vCtrl.loadSnapshot($index, imageData, imageData.imgComments, $event)" ng-Dblclick="vCtrl.removeItem($index)" class="snapshot">
                 </li>
             </ul>
         </div>

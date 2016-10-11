@@ -65,7 +65,8 @@ module.exports = {
                         console.warn('Passwords do not match for:', user);
                         res.status(403).send(errors.login);
                     } else {
-                        req.session.uid = user._id; // set the user in the session!
+                        req.session = user;
+                        //req.session.uid = user._id; // set the user in the session!
                         res.send(messages.login); // send a success message
                     }
                 });
@@ -86,13 +87,14 @@ module.exports = {
                         .send(errors.general);
                 }
             } else {
-                req.session.uid = user._id; // set the user in the session!
+                req.session = user;
+                //req.session.uid = user._id; // set the user in the session!
                 res.send(messages.register); // send a success message
             }
         });
     },
     session: (req, res, next) => {
-        if (req.session.uid) {
+        if (req.session) {
             next();
         } else {
             res.redirect('/public');

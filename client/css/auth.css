@@ -24,3 +24,13 @@ form {
     margin: 0;
     padding: 20px;
 }
+
+.container {
+    padding-top: 40px;
+    background: linear-gradient(#009944, transparent 10%), linear-gradient(0deg, #fff, transparent), #009944 url('../../download.jpeg') no-repeat center;
+    background-size: cover;
+}
+
+#login-btn {
+    background-color: black;
+}

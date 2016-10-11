@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="module.auth">
+<html ng-app="module.auth"> 
     <head>
         <title>Login</title>
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -10,10 +10,7 @@
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <script src="/js/module.auth.js"></script>
     </head>
-    <body ng-controller="module.auth.controller as auth" class="containter">
-        <p class="text-center">
-            <a class="btn btn-default" href="/">Homepage</a>
-        </p>
+    <body ng-controller="module.auth.controller as auth" class="container">
         <section id="tabs">
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
@@ -43,7 +40,7 @@
                                 <input required placeholder="Password" class="form-control" type="password" ng-model="auth.payload.password"/>
                             </div>
                         </fieldset>
-                        <input class="btn btn-primary" type="submit" value="Login">
+                        <input class="btn btn-primary" type="submit" value="Login" id="login-btn">
                         <p ng-class="auth.login.alert">{{ auth.login.message }}</p>
                     </form>
                 </div>
@@ -92,11 +89,14 @@
                                 </div><!-- /.col-lg-6 -->
                             </div><!-- /.row -->
                         </fieldset>
-                        <button class="btn btn-primary" type="submit">Register</button>
+                        <button class="btn btn-primary" type="submit" id="login-btn">Register</button>
                         <p ng-class="auth.register.alert">{{ auth.register.message }}</p>
                     </form>
                 </div>
             </div>
         </section>
+        <p class="text-center">
+            <a class="btn btn-default" href="/">Homepage</a>
+        </p>
     </body>
 </html>
