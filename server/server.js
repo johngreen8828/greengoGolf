@@ -32,7 +32,7 @@ app.use(
     logger,
     sessions,
     filerouter,
-    bodyParser.json(),
+    bodyParser.json({ limit: "20mb" }),
     bodyParser.urlencoded({ extended: true })
 );
 

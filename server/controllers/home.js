@@ -11,6 +11,12 @@ module.exports = {
         },
         video: (req, res) => {
             res.render('home/video', req.session);
+        },
+        teacher: (req, res) => {
+            res.render('home/teacher', req.session);
+        },
+        student: (req, res) => {
+            res.render('home/student', req.session);
         }
     }
 };

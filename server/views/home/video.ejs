@@ -3,7 +3,7 @@
     <div>
     
     <ul>
-        <li ng-repeat="video in vCtrl.videoList" ng-click="vCtrl.activeVideo=video.videoURL"><a>{{video.title}} posted by {{video.user}}</a></li>
+        <li ng-repeat="video in vCtrl.videoList" ng-click="vCtrl.activeVideo=video.videoURL; vCtrl.activeVideoTitle=video.title; vCtrl.getTips();"><a>{{video.title}} posted by {{video.user}}</a></li>
     </ul>
 
     </div>
@@ -30,6 +30,7 @@
     <div >
         <button ng-click="vCtrl.openModal();">Open Modal</button>
         <button ng-click="vCtrl.saveModal()">Save Screen Shot</button>
+        <button ng-click="vCtrl.saveDataArray()">Finish Editing</button>
         <div id='modalBox' onclick="vCtrl.moveModal();" ng-show="vCtrl.editing" ng-style="vCtrl.modalBoxStyles">
             <canvas crossOrigin="Anonymous" id='canvas'></canvas>
             <textarea class="tips" ng-Label="Golf Tips" type="text" placeholder="Enter Golf Tips:" ng-model="vCtrl.canData.tips"></textarea>

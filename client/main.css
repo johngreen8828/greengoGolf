@@ -96,6 +96,10 @@
         font-size: 1rem;
     }
     
+    #move-right {
+        float: right;
+    }
+    
     .title,
     #title {
         color: white;

@@ -25,6 +25,12 @@ function Router($routeProvider) {
         .when('/about', {
             templateUrl: '/home/about'
         })
+        .when('/teacher', {
+            templateUrl: '/home/teacher'
+        })
+        .when('/student', {
+            templateUrl: '/home/student'
+        })
         // route for the video page
         .when('/video', {
             templateUrl: '/home/video',
@@ -32,10 +38,10 @@ function Router($routeProvider) {
         });
 }
 
-VideoController.$inject = ['$http', 'Upload', $sce];
+VideoController.$inject = ['$http', 'Upload'];
 
 
-function VideoController($http, Upload, $sce) {
+function VideoController($http, Upload) {
     console.info('VideoController loaded!');
 
     var vCtrl = this;
@@ -46,6 +52,28 @@ function VideoController($http, Upload, $sce) {
             console.log("Video list: ", res.data);
             vCtrl.videoList = res.data;
         })
+    }
+
+    vCtrl.getTips = function() {
+        console.log("ALSO RUNNING", vCtrl.activeVideo);
+
+        $http.get('/api/getTips?title=' + vCtrl.activeVideoTitle).then(function(res) {
+            console.log("Got tips for ", vCtrl.activeVideoTitle);
+
+            console.log("getTips response: ", res)
+
+            if (res.data) {
+                vCtrl.canData = res.data.canData;
+            } else {
+                vCtrl.canData = [];
+            }
+        });
+    }
+
+    vCtrl.saveDataArray = function() {
+        $http.post('/api/saveTips', { title: vCtrl.activeVideoTitle, canData: vCtrl.canData }).then(function(res) {
+            console.log("Tips saved!", res.data);
+        });
     }
 
     vCtrl.postVideo = function() {
@@ -87,20 +115,11 @@ function VideoController($http, Upload, $sce) {
     vCtrl.openModal = function() {
         console.log('Open Modal event');
         vCtrl.editing = true;
-
         //var goTo = confirm(vCtrl.canData);
-
-
         //Open Modal Window
         document.getElementById("modalBox").style.zIndex = "3";
         var vid = document.querySelector("video");
-
         vCtrl.vid = vid; //attach video to controller
-        //vCtrl.canData = vid.ImagaData.data;
-        //vCtrl.canData = [];
-        //console.log("tips: " + vCtrl.canData.tips);
-        //load video into modal window
-
         var h = vCtrl.vid.videoHeight * 0.25;
         var w = vCtrl.vid.videoWidth * 0.25;
         console.log(vid, h, w);
@@ -109,12 +128,8 @@ function VideoController($http, Upload, $sce) {
         canvas.width = w;
         canvas.height = h;
         var ctx = canvas.getContext('2d');
-        //vCtrl.trustSrc = (src);
-        //$sce.trustAsResourceUrl(src);
         ctx.drawImage(vCtrl.vid, 0, 0, w, h);
-        //canvas.setAttribute('crossOrigin', 'anonymous');
-        //canvas.src = videoUrl;
-        var tmpImgData = canvas.toDataURL();
+        var tmpImgData = canvas.toDataURL(); // Read succeeds, canvas won't be dirty.
         console.log("Time Stamp of the pic--->" + vCtrl.vid.currentTime);
         console.log("height: " + h + "width: " + w)
         vCtrl.modalBoxStyles = {
@@ -130,14 +145,15 @@ function VideoController($http, Upload, $sce) {
             } else {
 
                 vCtrl.canData.push({
-                    imgGName: "John Green",
+                    imgGName: "", // TODO: fill in with logged in user's name
                     imgGEmail: "",
-                    imgSwingSegment: "Back Swing",
+                    imgSwingSegment: "",
                     imgData: tmpImgData,
                     imgTimeStamp: vCtrl.vid.currentTime,
                     imgComments: vCtrl.canData.tips,
                     imgScreenShotNum: vCtrl.canData.length,
-                    imgSnapped: true
+                    imgSnapped: true,
+                    videoUrl: vCtrl.activeVideo
                 })
             }
 
