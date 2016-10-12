@@ -5,16 +5,16 @@ var CanData = require('./models/canData.js');
 var Auth = require('./controllers/auth.js');
 var Home = require('./controllers/home.js');
 var multiparty = require('connect-multiparty')();
-var s3 = require('s3');
-var config = require('./config.js');
+// var s3 = require('s3');
+// var config = require('./config.js');
 var fs = require('fs');
 
-var s3Client = s3.createClient({
-    s3Options: {
-        accessKeyId: config.AWS_KEY,
-        secretAccessKey: config.SECRET
-    }
-})
+// var s3Client = s3.createClient({
+//     s3Options: {
+//         accessKeyId: config.AWS_KEY,
+//         secretAccessKey: config.SECRET
+//     }
+// })
 
 module.exports = function(app) {
 
