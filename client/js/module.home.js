@@ -31,6 +31,9 @@ function Router($routeProvider) {
         .when('/student', {
             templateUrl: '/home/student'
         })
+        // .when('/logout', {
+        //         templateUrl: '/login'
+        // })
         // route for the video page
         .when('/video', {
             templateUrl: '/home/video',
